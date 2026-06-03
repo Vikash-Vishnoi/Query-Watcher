@@ -69,9 +69,15 @@ module.exports = async function handler(req, res) {
   try {
     const incoming = await readPayload(req);
 
+    const clientIp =
+      (req.headers["x-forwarded-for"] || "").split(",")[0].trim() ||
+      (req.socket && req.socket.remoteAddress) ||
+      "";
+
     const event = {
       id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
       at: new Date().toISOString(),
+      ip: clientIp,
       method: req.method,
       payload: incoming,
       paramCount: incoming ? incoming.split("\n").filter(Boolean).length : 0,
