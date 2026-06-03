@@ -1,0 +1,13 @@
+{
+  "name": "query-watcher",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lightweight receiver dashboard that captures and displays all incoming query parameters.",
+  "scripts": {
+    "dev": "node --env-file=.env server.js",
+    "start": "node --env-file=.env server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
